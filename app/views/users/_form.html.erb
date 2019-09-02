@@ -1,4 +1,4 @@
-<%= form_for(user, url: users_path, method: :post) do |form| %>
+<%= form_for(user) do |form| %>
   <div class="field">
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>
@@ -11,7 +11,22 @@
     <%= form.label :email %>
     <%= form.email_field :email %>
   </div>
-  <div class="actions">
+  <h3>Permissions</h3>
+  <table cellspacing=1 cellpadding=5>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Permission</th>
+        <th>Sites</th>
+        <th>Destroy<th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'user_permission_fields', locals: { form: form } %>
+    </tbody>
+  </table>
+  <%= link_to_add_fields 'Add Permission', form, :user_permissions %>
+  <div class="actions" style='margin-top: 50px;'>
     <%= form.submit("Save") %>
   </div>
 <% end %>

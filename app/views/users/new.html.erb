@@ -1,7 +1,9 @@
 <h1>New User</h1>
 
 <%= render partial: 'form', locals: { user: @user } %>
-
+<%
+=begin%>
+ 
 <h3>Permissions</h3>
 <ul>
 <% @permissions.each do |p| %>
@@ -29,5 +31,7 @@
     <% end %>
 
   </li>
-<% end %>
+<% end %> 
+<%
+=end%>
 </ul>

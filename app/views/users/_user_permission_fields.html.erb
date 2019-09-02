@@ -1,0 +1,10 @@
+<%=form.fields_for :user_permissions do |f| %>
+  <tr>
+    <td></td>
+    <td> <%=f.select :permission_id, Permission.all.map{|p| [p.name, p.id]} %></td>
+    <td>
+      <%=f.select :site_id, [['All Sites', nil]] + Site.all.map{|s| [s.name, s.id] }%>
+    </td>
+    <td><%=f.check_box :_destroy %></td>
+  </tr>
+<% end %>
