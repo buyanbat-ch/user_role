@@ -1,4 +1,5 @@
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base  
+  rolify
   has_many :managers, class_name: "User", foreign_key: "company_id"
   has_many :user_permissions
   has_many :permissions, through: :user_permissions

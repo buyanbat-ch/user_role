@@ -6,13 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(first_name: 'John', last_name: 'Doe', email: 'john@example.com', company_id: nil)
-User.create(first_name: 'Peter', last_name: 'Bell', email: 'peter@example.com', company_id: 1)
-User.create(first_name: 'Chris', last_name: 'Dobson', email: 'chirs@example.com', company_id: 1)
-
-Role.create(name: 'super_admin')
-Role.create(name: 'company')
-Role.create(name: 'manager')
+user = User.new(first_name: 'John', last_name: 'Doe', email: 'john@example.com', company_id: nil)
+user.save
+user = User.new(first_name: 'Peter', last_name: 'Bell', email: 'peter@example.com', company_id: 1)
+user.save
+user = User.new(first_name: 'Chris', last_name: 'Dobson', email: 'chirs@example.com', company_id: 1)
+user.save
 
 Permission.create(name: 'Site Full Access')
 Permission.create(name: 'Site View Only')
