@@ -8,10 +8,13 @@
 
 user = User.new(first_name: 'John', last_name: 'Doe', email: 'john@example.com', company_id: nil)
 user.save
+user.add_role :company
 user = User.new(first_name: 'Peter', last_name: 'Bell', email: 'peter@example.com', company_id: 1)
 user.save
+user.add_role :manager
 user = User.new(first_name: 'Chris', last_name: 'Dobson', email: 'chirs@example.com', company_id: 1)
 user.save
+user.add_role :manager
 
 Permission.create(name: 'Site Full Access')
 Permission.create(name: 'Site View Only')
