@@ -1,4 +1,3 @@
-<%=form.fields_for :user_permissions do |f| %>
   <tr>
     <td>
     </td>
@@ -6,10 +5,12 @@
       <%=f.select :permission_id, Permission.all.map{|p| [p.name, p.id]} %>
     </td>
     <td>
-      <%=f.select :site_id, [['All Sites', nil]] + Site.all.map{|s| [s.name, s.id] }%>
+      <%=f.select :site_id,[['All Sites', nil]]  + Site.all.map{|s| [s.name, s.id] },{},  class: 'site-select'%>
+    </td>
+    <td>
+      <%=f.select :site_tab_id, SiteTab.where(site_id: f.object&.site_id).map{|s| [s.title, s.id] }, {prompt: 'All Tabs'}, class: 'tab-select' %>
     </td>
     <td>
       <%=f.check_box :_destroy %>
     </td>
   </tr>
-<% end %>

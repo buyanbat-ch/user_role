@@ -18,11 +18,14 @@
         <th>#</th>
         <th>Permission</th>
         <th>Sites</th>
+        <th>Site Tabs</th>
         <th>Destroy<th>
       </tr>
     </thead>
     <tbody>
-      <%= render partial: 'user_permission_fields', locals: { form: form } %>
+      <%=form.fields_for :user_permissions do |f| %>
+        <%= render partial: 'user_permission_fields', locals: { f: f } %>
+      <% end %>
     </tbody>
   </table>
   <%= link_to_add_fields 'Add Permission', form, :user_permissions %>

@@ -33,8 +33,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def tabs
+    @site = Site.find(params[:id])
+    render json: {tabs: @site.site_tabs.map {|tab| [tab.title, tab.id]}}
+  end
 
-private
+  private
 
   def user_params
     params.require(:user)
@@ -42,7 +47,7 @@ private
             :first_name,
             :last_name,
             :email,
-            user_permissions_attributes: [:id, :permission_id, :site_id, :_destroy ])
+            user_permissions_attributes: [:id, :permission_id, :site_id, :site_tab_id, :_destroy ])
   end
 
 end
