@@ -1,3 +1,33 @@
 <h1>New User</h1>
 
 <%= render partial: 'form', locals: { user: @user } %>
+
+<h3>Permissions</h3>
+<ul>
+<% @permissions.each do |p| %>
+  <li>
+    <%= check_box_tag "permissions[]", p.name %>
+    <%= label_tag p.name %>
+    <% if p.name.include? "Site Full Access" %>
+
+      <%= radio_button_tag :site_full_access, "all_sites" %>
+      <%= label_tag :full_access_all, "All Sites" %>
+
+      <%= radio_button_tag :site_full_access, "specific_sites" %>
+      <%= label_tag :full_access_some, "Specific Sites" %>
+
+    <% end %>
+
+    <% if p.name.include? "Site View Only" %>
+
+      <%= radio_button_tag :site_specific_access, "all_sites" %>
+      <%= label_tag :full_access_all, "All Sites" %>
+
+      <%= radio_button_tag :site_specifi_access, "specific_sites" %>
+      <%= label_tag :full_access_some, "Specific Sites" %>
+
+    <% end %>
+
+  </li>
+<% end %>
+</ul>
