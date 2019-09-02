@@ -1,4 +1,5 @@
 $( document ).on('turbolinks:load', function() {
+  $('select').select2();
   $("[data-form-prepend]").click(function(e){
     var obj = $($(this).attr("data-form-prepend"));
     obj.find("input, select, textarea").each(function() {
